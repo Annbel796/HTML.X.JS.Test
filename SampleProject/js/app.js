@@ -3,32 +3,44 @@
 const textField0 = document.getElementById("text0");
 const textField1 = document.getElementById("text1");
 
-// Intarnal Variables
+// Buttons
+const increaseScoreButton = document.getElementById("button0");
+
+// Internal Variables
 let score = 0;
 
-
-// textField0.innerText = showStylizedScore(786);
-
-// Process (What is going to happend)
-
-increaseScoreByOne()
+// Process (What is going to happen in what sequence?)
+increaseScoreButton.addEventListener("click", () => {
+  increaseScoreByOne();
+  updateScoreText();
+  checkScoreForSeven();
+});
 
 // Controllers
-
-
 function increaseScoreByOne (){
   score++;
-  updateScoreText(score)
+}
+function checkScoreForSeven (){
+if (score >= 7){
+  changeScoreTextColorToGreen()
+}
 }
 
 // View
-function updateScoreText(newText){
-  textField0.innerHTML = newText;
+function updateScoreText(){
+  textField0.innerHTML = "Your Score is: " + score;
+}
+function changeScoreTextColorToGreen(){
+  textField0.style.color = "green";
 }
 
 function updateStatusText(newText){
   textField1.innerHTML = newText;
 }
+
+
+
+// textField0.innerText = showStylizedScore(786);
 
 //function showScore(inputNumber){
 //   return inputNumber *100; // Output is a number.
